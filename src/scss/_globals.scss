@@ -1,0 +1,66 @@
+@use "helpers" as *;
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                        GLOBALS                               ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  // outline: 2px solid green;
+}
+
+html {
+  // font-size: vw(16px);
+
+  // @include tablet {
+  font-size: 16px;
+  // }
+}
+
+body {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  color: var(--color-white);
+  background-color: var(--color-white);
+  position: relative;
+  font-family: "Gilroy", sans-serif;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+a,
+button {
+  cursor:
+    url("/images/common/cursor.png") 8 8,
+    pointer;
+}
+
+:focus-visible {
+  outline: none;
+}
+
+img {
+  width: 100%;
+}

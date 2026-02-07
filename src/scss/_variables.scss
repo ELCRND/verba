@@ -1,0 +1,23 @@
+@use "helpers" as *;
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                        VARIABLES                             ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+:root {
+  --color-black: #313a45;
+  --color-white: #fefefe;
+  --color-red: #e53945;
+  --color-green: #164546;
+
+  :root {
+    --font-family: "Helvetica Neue", sans-serif;
+    // --second-family: "Cygre SemiBold", sans-serif;
+  }
+
+  --container-width: #{rem(1200)};
+  --container-padding-x: #{rem(20)};
+  --container-padding-x-tablet: #{rem(50)};
+
+  --transition-duration: 0.2s;
+}

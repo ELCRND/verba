@@ -1,0 +1,129 @@
+@use "sass:math";
+@use "functions" as *;
+@use "media" as *;
+
+@mixin fluid-text($min: 16, $max: 48) {
+  font-size: fluid($min, $max);
+}
+
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin abs-x {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
+
+@mixin abs-y {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@mixin container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+
+  @include mobile-s {
+    max-width: calc(
+      var(--container-width) + var(--container-padding-x--mobile) * 2
+    );
+    padding-inline: var(--container-padding-x--mobile);
+  }
+}
+
+@mixin btn-primary {
+  @include flex-center;
+  border-radius: 8px;
+  background: var(--color-tiffany);
+  font-weight: 500;
+  font-size: rem(20);
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: var(--color-white);
+
+  &:hover {
+    background: var(--button-hover);
+  }
+  &:active {
+    background: var(--button-pressed);
+  }
+
+  @include tablet {
+    font-size: rem(18);
+  }
+  @include mobile {
+    font-size: rem(16);
+  }
+}
+
+@mixin btn-secondary {
+  @include flex-center;
+  border: 2px solid var(--color-tiffany);
+  border-radius: 8px;
+  background: transparent;
+  font-weight: 500;
+  font-size: rem(20);
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: var(--color-tiffany);
+
+  &:hover {
+    background: var(--button-hover);
+  }
+  &:active {
+    background: var(--button-pressed);
+  }
+
+  @include tablet {
+    font-size: rem(18);
+  }
+  @include mobile {
+    font-size: rem(16);
+  }
+}

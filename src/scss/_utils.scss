@@ -1,0 +1,23 @@
+@use "helpers" as *;
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                        UTILS                                 ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+.u-container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+
+  @include tablet {
+    max-width: calc(
+      var(--container-width) + var(--container-padding-x-tablet) * 2
+    );
+    padding-inline: var(--container-padding-x-tablet);
+  }
+  @include mobile {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+
+    padding-inline: var(--container-padding-x);
+  }
+}
