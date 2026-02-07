@@ -418,6 +418,8 @@
 
 @include mobile {
   .header {
+    top: rem(10);
+
     &__menu {
       padding-top: rem(68);
       row-gap: rem(10);

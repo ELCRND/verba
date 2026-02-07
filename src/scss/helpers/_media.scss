@@ -3,7 +3,7 @@
 $laptop: 1440.98;
 $tablet: 1199.98;
 // $mobile: 767.98;
-$mobile: 479.98;
+$mobile: 719.98;
 
 @mixin laptop-above {
   @media (width > rem($laptop)) {

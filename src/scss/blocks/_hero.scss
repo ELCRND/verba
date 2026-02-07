@@ -155,6 +155,7 @@
   &__tag {
     height: fit-content;
     margin-left: rem(18);
+    margin-right: rem(32);
     font-weight: 500;
     font-size: rem(14);
     color: var(--color-white);
@@ -173,7 +174,6 @@
 
   &__link {
     flex: 0 0 auto;
-    margin-left: rem(32);
     padding-bottom: rem(5);
     font-weight: 500;
     font-size: rem(18);
@@ -189,181 +189,205 @@
 
 @include tablet {
   .hero {
-    padding-top: rem(150);
+    padding-top: rem(68);
 
     &__wrapper {
       padding: rem(30) rem(35) rem(93);
       border-radius: 25px;
-      background: linear-gradient(128deg, #84cfd1 0%, #74babb 100%);
-      position: relative;
     }
 
     &__title {
       max-width: rem(528);
       font-size: rem(38);
+      line-height: 100%;
     }
 
     &__description {
       max-width: rem(405);
-      margin-top: rem(18);
-      font-weight: 600;
+      margin-top: rem(14);
       font-size: rem(15);
-      line-height: 150%;
-      letter-spacing: 0.01em;
-      color: var(--color-white);
-      position: relative;
-      z-index: 2;
+      line-height: 169%;
 
       &--red {
-        margin-right: rem(10);
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
-
-        &::before {
-          @include abs-center;
-          content: "";
-          width: 125%;
-          height: 115%;
-          border-radius: 14px;
-          background-color: var(--color-red);
-          z-index: -1;
-        }
+        margin-right: rem(8);
+        margin-left: rem(7);
       }
 
       &--green {
-        font-weight: 700;
-        position: relative;
-        color: var(--color-green);
-        z-index: 1;
-        word-spacing: 0.1em;
-
-        &::before {
-          @include abs-center;
-          content: "";
-          width: 104%;
-          height: 112%;
-          border-radius: 14px;
-          background-color: var(--color-white);
-          z-index: -1;
-        }
+        margin-left: rem(7);
+        word-spacing: -0.02em;
       }
     }
 
     &__link {
-      @include flex-center;
       width: rem(234);
       height: rem(48);
-      margin-top: rem(33);
-      border-radius: 15px;
-      box-shadow:
-        0 3px 0 0 #d31a27,
-        0 15px 15px 0 rgba(211, 26, 39, 0.35);
-      background: linear-gradient(
-        180deg,
-        rgb(229, 57, 69) 0%,
-        rgb(194, 45, 55) 100%
-      );
-      gap: rem(10);
-      font-weight: 500;
-      font-size: rem(16);
-      color: var(--color-white);
-      position: relative;
-      z-index: 2;
+      margin-top: rem(38);
+      font-size: rem(15);
     }
 
     &__image {
-      width: 50%;
+      width: 45.5%;
+      min-width: rem(320);
+
+      img {
+        border-radius: 0 0 20px 0;
+      }
     }
 
     &__bg {
-      height: 100%;
-      position: absolute;
-      z-index: 0;
-      bottom: 0;
-      right: 0;
-      overflow: hidden;
-
       img {
-        translate: 17% -14%;
+        translate: 0 0;
       }
     }
 
     &__services {
-      margin-top: rem(22);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: rem(20) rem(40);
+      margin-top: rem(15);
+      gap: rem(10) rem(20);
     }
   }
 
   .hero-service {
-    flex: 1 1 rem(353);
-    min-height: rem(117);
-    padding: rem(30) rem(20) rem(10) rem(34);
-    border: 1px solid rgba(49, 58, 69, 0.1);
-    border-radius: 25px;
-    display: flex;
-    gap: rem(26);
+    flex: 0 1 calc(50% - rem(10));
+    min-height: rem(70);
+    padding: rem(15) rem(20) rem(6) rem(22);
+    border-radius: 15px;
+    gap: rem(11);
 
     &__icon {
-      width: rem(55);
-      height: rem(55);
-      position: relative;
-      flex-shrink: 0;
+      width: rem(40);
+      height: rem(40);
 
       svg {
-        position: absolute;
+        width: rem(35);
       }
     }
 
     &__text {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
+      row-gap: rem(4);
     }
 
     &__title {
-      flex: 1 0 100%;
-      font-weight: 600;
-      font-size: rem(24);
-      line-height: 84%;
-      color: var(--color-black);
+      font-size: rem(16);
     }
 
     &__tag {
-      height: fit-content;
-      margin-left: rem(18);
-      font-weight: 500;
-      font-size: rem(14);
-      color: var(--color-white);
-      position: relative;
+      margin-left: rem(8);
+      margin-right: rem(24);
 
       &::before {
-        @include abs-center;
-        content: "";
-        width: 150%;
-        height: 150%;
-        border-radius: 14px;
-        background-color: var(--color-red);
-        z-index: -1;
+        width: 130%;
+        height: 120%;
       }
     }
 
     &__link {
-      flex: 0 0 auto;
-      margin-left: rem(32);
-      padding-bottom: rem(5);
-      font-weight: 500;
-      font-size: rem(18);
-      text-decoration-skip-ink: none;
-      text-underline-offset: 3px;
-      color: var(--color-red);
+      font-size: rem(14);
 
       &:hover {
+        text-decoration: none;
+      }
+      &:active {
         text-decoration: underline;
       }
+    }
+  }
+}
+
+@include mobile {
+  .hero {
+    padding-top: rem(58);
+
+    &__wrapper {
+      padding: rem(20) rem(15) rem(35);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    &__title {
+      font-size: rem(28);
+    }
+
+    &__description {
+      margin-top: rem(16);
+      line-height: 159%;
+
+      &--green {
+        margin-left: rem(7);
+        word-spacing: -0.1em;
+      }
+    }
+
+    &__link {
+      margin-top: rem(198);
+      margin-inline: auto;
+    }
+
+    &__image {
+      width: auto;
+      min-width: rem(360);
+      right: 50%;
+      translate: 40% rem(35);
+
+      img {
+        border-radius: 0;
+      }
+    }
+
+    &__bg {
+      inset: 0;
+
+      img {
+        translate: 0 59%;
+      }
+    }
+
+    &__services {
+      margin-top: rem(15);
+      gap: rem(16) rem(14);
+    }
+  }
+
+  .hero-service {
+    flex: 0 1 calc(50% - rem(7));
+    min-height: rem(100);
+    padding: rem(12) rem(4) rem(12) rem(10);
+
+    gap: rem(8);
+
+    &__icon {
+      width: rem(40);
+      height: rem(40);
+
+      svg {
+        width: rem(35);
+      }
+    }
+
+    &__text {
+      row-gap: rem(4);
+    }
+
+    &__title {
+      font-size: rem(14);
+    }
+
+    &__tag {
+      margin-left: rem(6);
+      margin-right: 0;
+      font-size: rem(12);
+
+      &::before {
+        width: 130%;
+        height: 120%;
+      }
+    }
+
+    &__link {
+      width: 100%;
+      display: block;
+      font-size: rem(14);
+      translate: rem(-10) rem(4);
     }
   }
 }
