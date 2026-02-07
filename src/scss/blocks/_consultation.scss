@@ -1,0 +1,219 @@
+@use "../helpers/" as *;
+
+.consultation {
+  padding-top: rem(50);
+
+  &__wrapper {
+    padding: rem(65) rem(60);
+    border-radius: 25px;
+    background: linear-gradient(128deg, #84cfd1 0%, #74babb 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__title {
+    max-width: rem(717);
+    font-weight: 700;
+    font-size: rem(50);
+    line-height: 98%;
+    color: var(--color-white-absolute);
+    position: relative;
+    z-index: 2;
+  }
+
+  &__description {
+    margin-top: rem(22);
+    font-weight: 500;
+    font-size: rem(18);
+    color: var(--color-white-absolute);
+    position: relative;
+    z-index: 2;
+  }
+
+  &__form {
+    margin-top: rem(43);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: rem(9);
+    position: relative;
+    z-index: 2;
+
+    &-input {
+      width: rem(255);
+      padding: rem(28) rem(30);
+      border: none;
+      border-radius: 15px;
+      background-color: var(--color-white-absolute);
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(49, 58, 69, 0.7);
+
+      &::placeholder {
+        color: rgba(49, 58, 69, 0.37);
+      }
+    }
+
+    &-submit {
+      @include flex-center;
+      width: rem(255);
+      height: rem(72);
+      border-radius: 15px;
+      background: var(--color-red);
+      border-bottom: 3px solid #d31a27;
+      font-weight: 500;
+      font-size: rem(16);
+      color: var(--color-white-absolute);
+    }
+
+    &-privacy {
+      margin-top: rem(8);
+      font-weight: 500;
+      font-size: rem(12);
+      color: rgba(255, 255, 255, 0.69);
+
+      a {
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        color: var(--color-white-absolute);
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+  }
+
+  &__bg {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+  }
+}
+
+@include tablet {
+  .consultation {
+    padding-top: rem(46);
+
+    &__wrapper {
+      padding: rem(30) rem(25) rem(25) rem(25);
+      border-radius: 20px;
+    }
+
+    &__title {
+      max-width: rem(531);
+      font-size: rem(34);
+      line-height: 100%;
+    }
+
+    &__description {
+      max-width: rem(280);
+      margin-top: rem(15);
+      font-size: rem(16);
+    }
+
+    &__form {
+      width: fit-content;
+      margin-top: rem(24);
+      flex-direction: column;
+      align-items: start;
+      gap: rem(10);
+
+      &-input {
+        width: rem(270);
+        padding: rem(21) rem(30);
+
+        &::placeholder {
+          color: rgba(49, 58, 69, 0.37);
+        }
+      }
+
+      &-submit {
+        @include flex-center;
+        width: rem(270);
+        height: rem(60);
+        margin-top: rem(16);
+      }
+
+      &-privacy {
+        margin-top: rem(3);
+        max-width: rem(200);
+        align-self: center;
+        text-align: center;
+        font-size: rem(11);
+      }
+    }
+
+    &__image {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}
+
+@include mobile {
+  .consultation {
+    padding-top: rem(36);
+
+    &__title {
+      max-width: rem(270);
+      margin-inline: auto;
+      font-size: rem(26);
+    }
+
+    &__description {
+      max-width: rem(270);
+      margin-top: rem(8);
+      margin-inline: auto;
+      font-size: rem(14);
+    }
+
+    &__form {
+      width: fit-content;
+      margin-top: rem(24);
+      margin-inline: auto;
+      flex-direction: column;
+      align-items: start;
+      gap: rem(10);
+
+      &-input {
+        width: rem(270);
+        padding: rem(21) rem(30);
+
+        &::placeholder {
+          color: rgba(49, 58, 69, 0.37);
+        }
+      }
+
+      &-submit {
+        @include flex-center;
+        width: rem(270);
+        height: rem(60);
+        margin-top: rem(16);
+      }
+
+      &-privacy {
+        margin-top: rem(3);
+        max-width: rem(200);
+        align-self: center;
+        text-align: center;
+        font-size: rem(11);
+      }
+    }
+
+    &__image {
+      top: auto;
+      bottom: 0;
+    }
+
+    &__bg {
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

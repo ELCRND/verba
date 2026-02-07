@@ -1,0 +1,181 @@
+@use "../helpers/" as *;
+
+.design {
+  padding-top: rem(60);
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__description {
+    max-width: rem(428);
+    font-weight: 500;
+    font-size: rem(18);
+    line-height: 100%;
+    color: var(--color-black);
+    opacity: 0.9;
+
+    b {
+      font-weight: 600;
+    }
+  }
+
+  &__list {
+    margin-top: rem(50);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: rem(25) rem(40);
+  }
+}
+
+.design-card {
+  flex: 1 1 rem(353);
+  border: 1px solid rgba(49, 58, 69, 0.1);
+  border-radius: 25px;
+  background: var(--color-white-absolute);
+
+  &:first-of-type {
+    .design-card__image {
+      &-bg {
+        scale: 1.05;
+      }
+    }
+  }
+
+  &__image {
+    @include flex-center;
+    width: 100%;
+    height: rem(301);
+    border-radius: 25px;
+    background: var(--color-blue);
+    position: relative;
+    overflow: hidden;
+
+    &-img {
+      width: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    &-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    &-icon {
+      @include flex-center;
+      width: rem(70);
+      height: rem(70);
+      border-radius: 50%;
+      background-color: var(--color-red);
+      position: absolute;
+      bottom: rem(30);
+      left: rem(30);
+      z-index: 2;
+
+      img {
+        width: rem(38);
+      }
+    }
+  }
+
+  &__action {
+    @include flex-center;
+    width: rem(246);
+    height: rem(49);
+    margin: rem(9) auto;
+    border: 1px solid var(--color-red);
+    border-radius: 15px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: rem(16);
+    color: var(--color-red);
+  }
+}
+
+@include tablet {
+  .design {
+    padding-top: rem(50);
+
+    &__text {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: rem(15);
+    }
+
+    &__description {
+      max-width: rem(354);
+      font-size: rem(16);
+      letter-spacing: -0.02em;
+    }
+
+    &__list {
+      margin-top: rem(40);
+      gap: rem(20);
+    }
+  }
+
+  .design-card {
+    flex: 1 1 rem(300);
+    border-radius: 20px;
+
+    &:first-of-type {
+      .design-card__image {
+        &-bg {
+          scale: 1.05;
+        }
+      }
+    }
+
+    &__image {
+      height: rem(214);
+      border-radius: 20px;
+
+      &-img {
+        scale: 0.8;
+      }
+
+      &-icon {
+        width: rem(50);
+        height: rem(50);
+        bottom: rem(20);
+        left: rem(20);
+
+        img {
+          width: rem(27);
+        }
+      }
+    }
+
+    &__action {
+      width: rem(195);
+      height: rem(42);
+      margin: rem(9) auto;
+      font-size: rem(14);
+    }
+  }
+}
+
+@include mobile {
+  .design {
+    padding-top: rem(42);
+
+    &__text {
+      gap: rem(10);
+    }
+
+    &__description {
+      font-size: rem(14);
+    }
+
+    &__list {
+      margin-top: rem(23);
+      gap: rem(20);
+    }
+  }
+}

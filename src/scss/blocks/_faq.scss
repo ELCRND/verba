@@ -1,0 +1,241 @@
+@use "../helpers/" as *;
+
+.faq {
+  padding-top: rem(60);
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__description {
+    max-width: rem(320);
+    font-weight: 500;
+    font-size: rem(18);
+    line-height: 100%;
+    color: var(--color-black);
+    opacity: 0.9;
+  }
+
+  &__wrapper {
+    margin-top: rem(23);
+    display: flex;
+    gap: rem(68);
+  }
+
+  &__image {
+    flex: 0 0 rem(373);
+  }
+
+  &__list {
+    padding-top: rem(54);
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: rem(32);
+  }
+}
+
+.faq-item {
+  &__details {
+    &[open] {
+      & + .faq-item__wrapper {
+        grid-template-rows: 1fr;
+        margin-bottom: rem(22);
+      }
+
+      .faq-item__mark {
+        border-color: rgba(49, 58, 69, 0.1);
+        background-color: transparent;
+
+        &:after {
+          rotate: 0;
+          background-color: #6f757d;
+        }
+      }
+    }
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__question {
+    font-weight: 600;
+    font-size: rem(22);
+    line-height: 100%;
+    color: var(--color-black);
+  }
+
+  &__mark {
+    @include flex-center;
+    width: rem(40);
+    height: rem(40);
+    border: 1px solid var(--color-blue);
+    border-radius: 50%;
+    background-color: var(--color-blue);
+    position: relative;
+    transition: background-color var(--transition-duration) ease;
+
+    &::before,
+    &::after {
+      @include abs-center;
+      content: "";
+      width: rem(2);
+      height: rem(14);
+      border-radius: 2px;
+      background-color: var(--color-white-absolute);
+    }
+    &::after {
+      rotate: -90deg;
+      transition: rotate var(--transition-duration) ease;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    // transition: grid-template-rows var(--transition-duration) ease-out;
+  }
+
+  &__body {
+    margin-top: rem(8);
+    padding-right: rem(40);
+    overflow: hidden;
+  }
+
+  &__descritpion {
+    max-width: rem(643);
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: 100%;
+    color: rgba(49, 58, 69, 0.7);
+  }
+}
+
+@include tablet {
+  .faq {
+    padding-top: rem(46);
+
+    &__text {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: rem(15);
+    }
+
+    &__description {
+      max-width: rem(423);
+      font-size: rem(16);
+    }
+
+    &__wrapper {
+      margin-top: rem(40);
+      gap: 0;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__list {
+      padding-top: 0;
+      gap: rem(13);
+    }
+  }
+
+  .faq-item {
+    &__details {
+      &[open] {
+        & + .faq-item__wrapper {
+          margin-bottom: rem(12);
+        }
+      }
+    }
+
+    &__question {
+      font-size: rem(20);
+    }
+
+    &__mark {
+      width: rem(30);
+      height: rem(30);
+
+      &::before,
+      &::after {
+        height: rem(11);
+      }
+    }
+
+    &__body {
+      margin-top: rem(5);
+    }
+
+    &__descritpion {
+      max-width: rem(514);
+      font-size: rem(14);
+    }
+  }
+}
+
+@include mobile {
+  .faq {
+    padding-top: rem(40);
+
+    &__text {
+      gap: rem(10);
+    }
+
+    &__title {
+      max-width: rem(190);
+    }
+
+    &__description {
+      font-size: rem(14);
+    }
+
+    &__wrapper {
+      margin-top: rem(22);
+    }
+
+    &__list {
+      gap: rem(11);
+    }
+  }
+
+  .faq-item {
+    &__details {
+      &[open] {
+        & + .faq-item__wrapper {
+          margin-bottom: rem(7);
+        }
+      }
+    }
+
+    &__question {
+      font-size: rem(20);
+    }
+
+    &__mark {
+      width: rem(30);
+      height: rem(30);
+
+      &::before,
+      &::after {
+        height: rem(11);
+      }
+    }
+
+    &__body {
+      margin-top: rem(5);
+    }
+
+    &__descritpion {
+      max-width: rem(514);
+      font-size: rem(14);
+    }
+  }
+}

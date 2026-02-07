@@ -53,16 +53,13 @@ a {
 }
 
 a,
-button {
+button,
+summary {
   cursor:
-    url("/images/common/cursor.png") 8 8,
+    url("/images/common/cursor.svg") 2 2,
     pointer;
 }
 
 :focus-visible {
   outline: none;
-}
-
-img {
-  width: 100%;
 }

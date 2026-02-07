@@ -73,14 +73,9 @@
     height: rem(60);
     margin-top: rem(33);
     border-radius: 15px;
-    box-shadow:
-      0 3px 0 0 #d31a27,
-      0 15px 15px 0 rgba(211, 26, 39, 0.35);
-    background: linear-gradient(
-      180deg,
-      rgb(229, 57, 69) 0%,
-      rgb(194, 45, 55) 100%
-    );
+    box-shadow: 0 11px 15px 0 rgba(211, 26, 39, 0.35);
+    background: var(--color-red);
+    border-bottom: 3px solid #d31a27;
     gap: rem(10);
     font-weight: 500;
     font-size: rem(16);
@@ -94,6 +89,9 @@
     bottom: 0;
     right: 0;
     z-index: 1;
+    img {
+      border-radius: 0 0 22px 0;
+    }
   }
 
   &__bg {
@@ -103,6 +101,7 @@
     bottom: 0;
     right: 0;
     overflow: hidden;
+    border-radius: 0 0 25px 0;
 
     img {
       translate: 17% -14%;
@@ -113,13 +112,13 @@
     margin-top: rem(22);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: rem(20) rem(40);
+    justify-content: space-between;
+    row-gap: rem(20);
   }
 }
 
 .hero-service {
-  flex: 1 1 rem(353);
+  flex: 0 1 rem(373);
   min-height: rem(117);
   padding: rem(30) rem(20) rem(10) rem(34);
   border: 1px solid rgba(49, 58, 69, 0.1);
@@ -243,7 +242,7 @@
 
     &__services {
       margin-top: rem(15);
-      gap: rem(10) rem(20);
+      row-gap: rem(10);
     }
   }
 
@@ -338,13 +337,14 @@
       inset: 0;
 
       img {
-        translate: 0 59%;
+        width: 100%;
+        object-fit: cover;
       }
     }
 
     &__services {
       margin-top: rem(15);
-      gap: rem(16) rem(14);
+      row-gap: rem(16);
     }
   }
 

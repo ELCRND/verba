@@ -79,6 +79,11 @@
         width: 100%;
         height: rem(44);
       }
+
+      &:hover {
+        color: var(--color-red);
+        text-decoration: underline;
+      }
     }
   }
 
@@ -106,7 +111,7 @@
       &--tg {
         width: rem(50);
         height: rem(50);
-        border: 2px solid #fff;
+        border: 2px solid var(--color-white-absolute);
         background: linear-gradient(137deg, #0099d8 0%, #28ade2 100%);
         translate: rem(-10) 0;
       }
@@ -214,6 +219,11 @@
     font-weight: 500;
     font-size: rem(16);
     color: var(--color-black);
+
+    &:hover {
+      color: var(--color-red);
+      text-decoration: underline;
+    }
   }
 }
 
@@ -353,6 +363,16 @@
         border-top: 1px solid rgba(43, 43, 43, 0.1);
         display: block;
 
+        &:hover {
+          color: var(--color-black);
+          text-decoration: none;
+        }
+
+        &:active {
+          color: var(--color-red);
+          text-decoration: underline;
+        }
+
         &::before {
           content: none;
         }
@@ -412,6 +432,16 @@
       padding-inline: rem(65);
       border-top: 1px solid rgba(43, 43, 43, 0.1);
       font-size: rem(13);
+
+      &:hover {
+        color: var(--color-black);
+        text-decoration: none;
+      }
+
+      &:active {
+        color: var(--color-red);
+        text-decoration: underline;
+      }
     }
   }
 }
