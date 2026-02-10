@@ -1,0 +1,245 @@
+@use "../helpers/" as *;
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                           REVIEWS                            ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+.reviews {
+  padding-top: rem(60);
+
+  &__container {
+    position: relative;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: rem(18);
+    line-height: 100%;
+    color: var(--color-black);
+    opacity: 0.9;
+  }
+
+  &__slider {
+    margin-top: rem(50);
+    overflow: hidden;
+
+    &-prev,
+    &-next {
+      @include flex-center;
+      width: rem(40);
+      height: rem(40);
+      border: 1px solid rgba(132, 207, 209, 0);
+      border-radius: 50%;
+      background: #84cfd1;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      translate: 0% -50%;
+      z-index: 100;
+    }
+
+    &-next {
+      left: auto;
+      right: 0;
+      img {
+        rotate: 180deg;
+      }
+    }
+  }
+
+  &__link {
+    @include flex-center;
+    width: rem(226);
+    height: rem(60);
+    margin-top: rem(40);
+    margin-inline: auto;
+    border-radius: 15px;
+    background: var(--color-red);
+    border-bottom: 3px solid #d31a27;
+    box-shadow:
+      0 11px 15px 0 rgba(211, 26, 39, 0.35),
+      0 0 40px rgba(211, 26, 39, 0.35) inset;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: rem(16);
+    color: var(--color-white-absolute);
+  }
+}
+
+.reviews-card {
+  flex: 1 0 rem(373);
+  min-height: rem(241);
+  padding: rem(33) rem(30);
+  border: 1px solid rgba(49, 58, 69, 0.1);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__name {
+    order: 0;
+    font-weight: 600;
+    font-size: rem(24);
+    line-height: 100%;
+    color: var(--color-black);
+  }
+
+  &__text {
+    order: 2;
+    margin-top: rem(20);
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: 100%;
+    color: rgba(49, 58, 69, 0.7);
+  }
+
+  &__quotes {
+    position: absolute;
+    top: rem(30);
+    right: rem(30);
+  }
+
+  &__stars {
+    order: 1;
+    margin-top: rem(10);
+    display: flex;
+    gap: rem(5);
+  }
+}
+
+/* ═══════════════════════════════════╗
+   REVIEWS / tablet                   ║
+   ═══════════════════════════════════╝ */
+@include tablet {
+  .reviews {
+    padding-top: rem(50);
+
+    &__text {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: rem(15);
+    }
+
+    &__description {
+      font-size: rem(16);
+    }
+
+    &__slider {
+      margin-top: rem(40);
+
+      &-prev,
+      &-next {
+        width: rem(35);
+        height: rem(35);
+        translate: 100% -30%;
+
+        img {
+          scale: 0.8;
+        }
+      }
+
+      &-next {
+        translate: -100% -30%;
+      }
+    }
+
+    &__link {
+      width: rem(270);
+      margin-top: rem(30);
+    }
+  }
+
+  .reviews-card {
+    flex: 1 0 rem(300);
+    min-height: rem(171);
+    padding: rem(30) rem(25);
+
+    &__name {
+      font-size: rem(20);
+    }
+
+    &__text {
+      margin-top: rem(10);
+      font-size: rem(14);
+    }
+
+    &__quotes {
+      width: rem(26);
+      top: rem(34);
+      right: rem(22);
+    }
+
+    &__stars {
+      margin-top: rem(5);
+    }
+  }
+}
+
+/* ═══════════════════════════════════╗
+   REVIEWS / mobile                   ║
+   ═══════════════════════════════════╝ */
+@include mobile {
+  .reviews {
+    padding-top: rem(42);
+
+    &__text {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: rem(10);
+    }
+
+    &__description {
+      font-size: rem(14);
+    }
+
+    &__slider {
+      margin-top: rem(24);
+
+      &-prev,
+      &-next {
+        width: rem(30);
+        height: rem(30);
+        translate: 20% -50%;
+
+        img {
+          scale: 0.8;
+        }
+      }
+
+      &-next {
+        translate: -20% -50%;
+      }
+    }
+
+    &__link {
+      width: rem(270);
+      margin-top: rem(18);
+    }
+  }
+
+  .reviews-card {
+    &__name {
+      font-size: rem(20);
+    }
+
+    &__text {
+      margin-top: rem(15);
+    }
+
+    &__quotes {
+      top: rem(36);
+    }
+
+    &__stars {
+      gap: rem(8);
+    }
+  }
+}

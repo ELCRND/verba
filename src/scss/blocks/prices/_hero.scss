@@ -1,0 +1,165 @@
+@use "../../helpers/" as *;
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                        HERO                                  ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+.hero {
+  padding-top: rem(162);
+  overflow-x: hidden;
+
+  &__container {
+    min-height: rem(536);
+    position: relative;
+  }
+
+  &__title {
+    max-width: rem(538);
+    font-weight: 700;
+    font-size: rem(50);
+    line-height: 98%;
+    color: var(--color-black);
+    position: relative;
+    z-index: 2;
+  }
+
+  &__description {
+    margin-top: rem(15);
+    font-weight: 500;
+    font-size: rem(18);
+    line-height: 100%;
+    color: rgba(49, 58, 69, 0.9);
+    position: relative;
+    z-index: 2;
+  }
+
+  &__link {
+    @include flex-center;
+    width: rem(248);
+    height: rem(60);
+    margin-top: rem(37);
+    border-radius: 15px;
+    box-shadow:
+      0 11px 15px 0 rgba(211, 26, 39, 0.35),
+      0 0 40px rgba(211, 26, 39, 0.35) inset;
+    background: var(--color-red);
+    border-bottom: 3px solid #d31a27;
+    gap: rem(10);
+    font-weight: 500;
+    font-size: rem(16);
+    color: var(--color-white);
+    position: relative;
+    z-index: 2;
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    right: rem(90);
+    z-index: 1;
+  }
+
+  &__bg {
+    min-width: rem(1457);
+    position: absolute;
+    bottom: rem(34);
+    right: rem(-40);
+    z-index: 0;
+    // translate: -2.5% 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+/* ═══════════════════════════════════╗
+   HERO / tablet                      ║
+   ═══════════════════════════════════╝ */
+@include tablet {
+  .hero {
+    padding-top: rem(78);
+    overflow: visible;
+
+    &__container {
+      min-height: rem(300);
+    }
+
+    &__title {
+      max-width: rem(418);
+      font-size: rem(38);
+    }
+
+    &__description {
+      font-size: rem(16);
+    }
+
+    &__link {
+      width: rem(217);
+      height: rem(50);
+      margin-top: rem(42);
+    }
+
+    &__image {
+      bottom: 0;
+      right: rem(70);
+    }
+
+    &__bg {
+      min-width: auto;
+      bottom: rem(-50);
+      right: 0;
+
+      img {
+        width: auto;
+      }
+    }
+  }
+}
+
+/* ═══════════════════════════════════╗
+   HERO / tablet                      ║
+   ═══════════════════════════════════╝ */
+@include mobile {
+  .hero {
+    padding-top: rem(68);
+    position: relative;
+
+    &__container {
+      position: static;
+      min-height: auto;
+      padding-bottom: rem(34);
+      padding-right: 0;
+    }
+
+    &__title {
+      max-width: rem(320);
+      font-size: rem(28);
+    }
+
+    &__description {
+      margin-top: rem(17);
+      font-size: rem(15);
+    }
+
+    &__link {
+      width: rem(217);
+      height: rem(53);
+      margin-top: rem(224);
+      margin-inline: auto;
+      translate: rem(-20) 0;
+    }
+
+    &__image {
+      // position: static;
+
+      bottom: rem(-16);
+      right: rem(50);
+    }
+
+    &__bg {
+      bottom: rem(-60);
+      right: 0;
+    }
+  }
+}

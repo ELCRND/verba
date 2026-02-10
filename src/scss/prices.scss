@@ -1,0 +1,13 @@
+@use "normalize";
+@use "fonts";
+@use "variables";
+@use "utils";
+@use "globals";
+
+@use "blocks/header";
+
+@use "blocks/prices/hero";
+@use "blocks/prices/pricing";
+@use "blocks/prices/consultation";
+
+@use "blocks/footer";

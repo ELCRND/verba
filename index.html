@@ -6,42 +6,860 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ВЕРБА</title>
-  <link rel="stylesheet" href="css/main.css">
+  <meta name="description" content="  Печатная продукция с индивидуальным дизайном в короткие сроки" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .header {
+      width: 100%;
+      position: absolute;
+      top: 1.25rem;
+      z-index: 1000;
+    }
+
+    .header__container {
+      display: flex;
+      align-items: center;
+    }
+
+    .header__menu {
+      display: contents;
+    }
+
+    .header__wrapper {
+      display: contents;
+    }
+
+    .header__nav {
+      margin-right: 2.1875rem;
+    }
+
+    .header__nav-list {
+      display: flex;
+      align-items: center;
+      gap: 2.6875rem;
+    }
+
+    .header__nav-item {
+      height: 100%;
+    }
+
+    .header__nav-link {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-black);
+      position: relative;
+    }
+
+    .header__nav-link::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      content: "";
+      width: 100%;
+      height: 2.75rem;
+    }
+
+    .header__nav-link:hover {
+      color: var(--color-red);
+      text-decoration: underline;
+    }
+
+    .header__socials {
+      display: flex;
+      align-items: center;
+    }
+
+    .header__socials-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 15px;
+    }
+
+    .header__socials-link--max {
+      background: linear-gradient(70deg, #4cf 0%, #53e 40%, #93d 75%), radial-gradient(ellipse at 20% 120%, #00f 0%, rgba(0, 0, 255, 0.75) 35%, transparent 65%);
+    }
+
+    .header__socials-link--tg {
+      width: 3.125rem;
+      height: 3.125rem;
+      border: 2px solid var(--color-white-absolute);
+      background: linear-gradient(137deg, #0099d8 0%, #28ade2 100%);
+      translate: -0.625rem 0;
+    }
+
+    .header__address {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .header__address-phone {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-black);
+    }
+
+    .header__address-location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 400;
+      font-size: 0.875rem;
+      text-align: right;
+      color: rgba(49, 58, 69, 0.7);
+    }
+
+    .header__phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14.625rem;
+      height: 3.6875rem;
+      margin-left: auto;
+      border: 1px solid var(--color-red);
+      border-radius: 15px;
+      gap: 0.625rem;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-red);
+    }
+
+    @media (width <=74.99875rem) {
+      .header {
+        top: 0.9375rem;
+      }
+
+      .header::before {
+        content: "";
+        width: 100%;
+        height: calc(100% + 0.9375rem);
+        background-color: var(--color-white);
+        position: absolute;
+        top: -0.9375rem;
+        left: 0;
+        z-index: 1;
+      }
+
+      .header__menu {
+        width: 100%;
+        min-height: 100dvh;
+        padding-top: 4.25rem;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        align-items: start;
+        row-gap: 1.125rem;
+        background-color: var(--color-white);
+        position: absolute;
+        top: -0.9375rem;
+        left: 0;
+        z-index: 0;
+        translate: 0 -100%;
+        transition: translate var(--transition-duration) ease-out;
+        visibility: hidden;
+      }
+
+      .header__menu--active {
+        translate: 0 0;
+        visibility: visible;
+      }
+
+      .header__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+      }
+
+      .header__open {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        margin-left: auto;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        flex-direction: column;
+        gap: 0.25rem;
+        z-index: 2;
+      }
+
+      .header__open span {
+        width: 1.0625rem;
+        height: 0.125rem;
+        background-color: var(--color-red);
+        border-radius: 2px;
+      }
+
+      .header__open--active {
+        border-color: transparent;
+      }
+
+      .header__open--active span:first-of-type {
+        rotate: 45deg;
+        translate: 0 300%;
+      }
+
+      .header__open--active span:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      .header__open--active span:last-of-type {
+        rotate: -45deg;
+        translate: 0 -300%;
+      }
+
+      .header__nav {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .header__nav-list {
+        width: 100%;
+        flex-direction: column;
+        align-items: start;
+        gap: 0;
+      }
+
+      .header__nav-item {
+        width: 100%;
+      }
+
+      .header__nav-item:last-of-type .header__nav-link {
+        border-bottom: 1px solid rgba(43, 43, 43, 0.1);
+      }
+
+      .header__nav-link {
+        width: 100%;
+        padding-block: 0.9375rem;
+        padding-inline: var(--container-padding-x-tablet);
+        border-top: 1px solid rgba(43, 43, 43, 0.1);
+        display: block;
+      }
+
+      .header__nav-link:hover {
+        color: var(--color-black);
+        text-decoration: none;
+      }
+
+      .header__nav-link:active {
+        color: var(--color-red);
+        text-decoration: underline;
+      }
+
+      .header__nav-link::before {
+        content: none;
+      }
+
+      .header__socials {
+        justify-self: end;
+      }
+
+      .header__address {
+        margin-left: 0;
+      }
+
+      .header__phone {
+        margin-left: 1.5625rem;
+      }
+
+      .header .logo {
+        margin-right: 0;
+        gap: 0.4375rem;
+        z-index: 3;
+      }
+
+      .header .logo-icon {
+        width: 2.3125rem;
+        height: 2.375rem;
+        border-radius: 4px;
+      }
+
+      .header .logo-icon svg {
+        bottom: -2px;
+        right: -4px;
+      }
+
+      .header .logo-text {
+        font-size: 0.5rem;
+      }
+
+      .header .logo-text--name {
+        font-size: 1.75rem;
+      }
+
+      .header .custom-dropdown {
+        position: relative;
+      }
+
+      .header .custom-dropdown__details {
+        padding-block: 0.875rem;
+        padding-inline: var(--container-padding-x-tablet);
+        border-top: 1px solid rgba(43, 43, 43, 0.1);
+        color: var(--color-black);
+      }
+
+      .header .custom-dropdown__details[open]+.custom-dropdown__wrapper {
+        grid-template-rows: 1fr;
+        box-shadow: none;
+      }
+
+      .header .custom-dropdown__wrapper {
+        border-radius: 0;
+        display: grid;
+        grid-template-rows: 0fr;
+        position: static;
+        transition: var(--transition-duration);
+        translate: 0 0;
+      }
+
+      .header .custom-dropdown__list {
+        overflow: hidden;
+        min-width: 11.25rem;
+        padding-inline: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header .custom-dropdown__link {
+        width: 100%;
+        padding-block: 0.875rem;
+        padding-inline: 4.0625rem;
+        border-top: 1px solid rgba(43, 43, 43, 0.1);
+        font-size: 0.8125rem;
+      }
+
+      .header .custom-dropdown__link:hover {
+        color: var(--color-black);
+        text-decoration: none;
+      }
+
+      .header .custom-dropdown__link:active {
+        color: var(--color-red);
+        text-decoration: underline;
+      }
+    }
+
+    @media (width <=44.99875rem) {
+      .header {
+        top: 0.625rem;
+      }
+
+      .header__menu {
+        padding-top: 4.25rem;
+        row-gap: 0.625rem;
+      }
+
+      .header__wrapper {
+        gap: 0.9375rem;
+      }
+
+      .header__nav-link {
+        padding-inline: var(--container-padding-x);
+        font-size: 0.875rem;
+      }
+
+      .header__socials {
+        order: 0;
+      }
+
+      .header__socials-link {
+        width: 2.1875rem;
+        height: 2.1875rem;
+        border-radius: 10px;
+      }
+
+      .header__socials-link--tg {
+        width: 2.25rem;
+        height: 2.25rem;
+        border-width: 1px;
+      }
+
+      .header__address {
+        order: 2;
+      }
+
+      .header__address-phone {
+        font-size: 1.125rem;
+      }
+
+      .header__phone {
+        order: 1;
+        width: 11.4375rem;
+        height: 2.75rem;
+        margin-left: 0;
+      }
+
+      .header .custom-dropdown .custom-dropdown {
+        position: relative;
+      }
+
+      .header .custom-dropdown .custom-dropdown__details {
+        padding-block: 0.875rem;
+        padding-inline: var(--container-padding-x);
+        border-top: 1px solid rgba(43, 43, 43, 0.1);
+        color: var(--color-black);
+        font-size: 0.875rem;
+      }
+
+      .header .custom-dropdown .custom-dropdown__details[open]+.custom-dropdown__wrapper {
+        grid-template-rows: 1fr;
+        box-shadow: none;
+      }
+
+      .header .custom-dropdown .custom-dropdown__wrapper {
+        border-radius: 0;
+        display: grid;
+        grid-template-rows: 0fr;
+        position: static;
+        transition: var(--transition-duration);
+        translate: 0 0;
+      }
+
+      .header .custom-dropdown .custom-dropdown__list {
+        overflow: hidden;
+        min-width: 11.25rem;
+        padding-inline: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header .custom-dropdown .custom-dropdown__link {
+        width: 100%;
+        padding-block: 0.875rem;
+        padding-inline: 1.5625rem;
+        border-top: 1px solid rgba(43, 43, 43, 0.1);
+        font-size: 0.8125rem;
+      }
+    }
+
+    .hero {
+      padding-top: 9.375rem;
+    }
+
+    .hero__wrapper {
+      padding: 3rem 3.75rem 4.3125rem;
+      border-radius: 25px;
+      background: linear-gradient(128deg, #84cfd1 0%, #74babb 100%);
+      position: relative;
+    }
+
+    .hero__title {
+      max-width: 43.75rem;
+      font-weight: 700;
+      font-size: 3.125rem;
+      line-height: 98%;
+      color: var(--color-white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__description {
+      max-width: 25.3125rem;
+      margin-top: 1.125rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 150%;
+      letter-spacing: 0.01em;
+      color: var(--color-white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__description--red {
+      margin-right: 0.625rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__description--red::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      content: "";
+      width: 125%;
+      height: 115%;
+      border-radius: 14px;
+      background-color: var(--color-red);
+      z-index: -1;
+    }
+
+    .hero__description--green {
+      font-weight: 700;
+      position: relative;
+      color: var(--color-green);
+      z-index: 1;
+      word-spacing: 0.1em;
+    }
+
+    .hero__description--green::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      content: "";
+      width: 104%;
+      height: 112%;
+      border-radius: 14px;
+      background-color: var(--color-white);
+      z-index: -1;
+    }
+
+    .hero__link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16.6875rem;
+      height: 3.75rem;
+      margin-top: 2.0625rem;
+      border-radius: 15px;
+      box-shadow: 0 11px 15px 0 rgba(211, 26, 39, 0.35), 0 0 40px rgba(211, 26, 39, 0.35) inset;
+      background: var(--color-red);
+      border-bottom: 3px solid #d31a27;
+      gap: 0.625rem;
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__image {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    .hero__image img {
+      border-radius: 0 0 22px 0;
+    }
+
+    .hero__bg {
+      height: 100%;
+      position: absolute;
+      z-index: 0;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+      border-radius: 0 0 25px 0;
+    }
+
+    .hero__bg img {
+      translate: 17% -14%;
+    }
+
+    .hero__services {
+      margin-top: 1.375rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 1.25rem;
+    }
+
+    .hero-service {
+      flex: 0 1 23.3125rem;
+      min-height: 7.3125rem;
+      padding: 1.875rem 1.25rem 0.625rem 2.125rem;
+      border: 1px solid rgba(49, 58, 69, 0.1);
+      border-radius: 25px;
+      display: flex;
+      gap: 1.625rem;
+    }
+
+    .hero-service__icon {
+      width: 3.4375rem;
+      height: 3.4375rem;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .hero-service__icon svg {
+      position: absolute;
+    }
+
+    .hero-service__text {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .hero-service__title {
+      flex: 1 0 100%;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 84%;
+      color: var(--color-black);
+    }
+
+    .hero-service__tag {
+      height: -moz-fit-content;
+      height: fit-content;
+      margin-left: 1.125rem;
+      margin-right: 2rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--color-white);
+      position: relative;
+    }
+
+    .hero-service__tag::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      content: "";
+      width: 150%;
+      height: 150%;
+      border-radius: 14px;
+      background-color: var(--color-red);
+      z-index: -1;
+    }
+
+    .hero-service__link {
+      flex: 0 0 auto;
+      padding-bottom: 0.3125rem;
+      font-weight: 500;
+      font-size: 1.125rem;
+      -webkit-text-decoration-skip-ink: none;
+      text-decoration-skip-ink: none;
+      text-underline-offset: 3px;
+      color: var(--color-red);
+    }
+
+    .hero-service__link:hover {
+      text-decoration: underline;
+    }
+
+    @media (width <=74.99875rem) {
+      .hero {
+        padding-top: 4.25rem;
+      }
+
+      .hero__wrapper {
+        padding: 1.875rem 2.1875rem 5.8125rem;
+        border-radius: 25px;
+      }
+
+      .hero__title {
+        max-width: 33rem;
+        font-size: 2.375rem;
+        line-height: 100%;
+      }
+
+      .hero__description {
+        max-width: 25.3125rem;
+        margin-top: 0.875rem;
+        font-size: 0.9375rem;
+        line-height: 169%;
+      }
+
+      .hero__description--red {
+        margin-right: 0.5rem;
+        margin-left: 0.4375rem;
+      }
+
+      .hero__description--green {
+        margin-left: 0.4375rem;
+        word-spacing: -0.02em;
+      }
+
+      .hero__link {
+        width: 14.625rem;
+        height: 3rem;
+        margin-top: 2.375rem;
+        font-size: 0.9375rem;
+      }
+
+      .hero__image {
+        width: 45.5%;
+        min-width: 20rem;
+      }
+
+      .hero__image img {
+        border-radius: 0 0 20px 0;
+      }
+
+      .hero__bg img {
+        translate: 0 0;
+      }
+
+      .hero__services {
+        margin-top: 0.9375rem;
+        row-gap: 0.625rem;
+      }
+
+      .hero-service {
+        flex: 0 1 calc(50% - 0.625rem);
+        min-height: 4.375rem;
+        padding: 0.9375rem 1.25rem 0.375rem 1.375rem;
+        border-radius: 15px;
+        gap: 0.6875rem;
+      }
+
+      .hero-service__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .hero-service__icon svg {
+        width: 2.1875rem;
+      }
+
+      .hero-service__text {
+        row-gap: 0.25rem;
+      }
+
+      .hero-service__title {
+        font-size: 1rem;
+      }
+
+      .hero-service__tag {
+        margin-left: 0.5rem;
+        margin-right: 1.5rem;
+      }
+
+      .hero-service__tag::before {
+        width: 130%;
+        height: 120%;
+      }
+
+      .hero-service__link {
+        font-size: 0.875rem;
+      }
+
+      .hero-service__link:hover {
+        text-decoration: none;
+      }
+
+      .hero-service__link:active {
+        text-decoration: underline;
+      }
+    }
+
+    @media (width <=44.99875rem) {
+      .hero {
+        padding-top: 3.625rem;
+      }
+
+      .hero__wrapper {
+        padding: 1.25rem 0.9375rem 2.1875rem;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .hero__title {
+        font-size: 1.75rem;
+      }
+
+      .hero__description {
+        margin-top: 1rem;
+        line-height: 159%;
+      }
+
+      .hero__description--green {
+        margin-left: 0.4375rem;
+        word-spacing: -0.1em;
+      }
+
+      .hero__link {
+        margin-top: 12.375rem;
+        margin-inline: auto;
+      }
+
+      .hero__image {
+        width: auto;
+        min-width: 22.5rem;
+        right: 50%;
+        translate: 40% 2.1875rem;
+      }
+
+      .hero__image img {
+        border-radius: 0;
+      }
+
+      .hero__bg {
+        inset: 0;
+      }
+
+      .hero__bg img {
+        width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+
+      .hero__services {
+        margin-top: 0.9375rem;
+        row-gap: 1rem;
+      }
+
+      .hero-service {
+        flex: 0 1 calc(50% - 0.4375rem);
+        min-height: 6.25rem;
+        padding: 0.75rem 0.25rem 0.75rem 0.625rem;
+        gap: 0.5rem;
+      }
+
+      .hero-service__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .hero-service__icon svg {
+        width: 2.1875rem;
+      }
+
+      .hero-service__text {
+        row-gap: 0.25rem;
+      }
+
+      .hero-service__title {
+        font-size: 0.875rem;
+      }
+
+      .hero-service__tag {
+        margin-left: 0.375rem;
+        margin-right: 0;
+        font-size: 0.75rem;
+      }
+
+      .hero-service__tag::before {
+        width: 130%;
+        height: 120%;
+      }
+
+      .hero-service__link {
+        width: 100%;
+        display: block;
+        font-size: 0.875rem;
+        translate: -0.625rem 0.25rem;
+      }
+    }
+  </style>
+
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+  </noscript>
 </head>
 
 <body>
-
-
-  <!-- SPRITES -->
-  <svg style="display: none;">
-
-    <symbol id="logo" viewBox="0 0 65 64">
-      <path fill="white" stroke="white" stroke-width=".339"
-        d="M30.628.99C39.303 6.688 34.351 32.057 30.628 26.496S21.952-4.707 30.628.99zM11.324 10.01c10.313-1.165 22.723 21.509 16.305 19.613s-26.619-18.559-16.305-19.613zM1.094 31.907c6.097-8.399 31.207-2.265 25.478 1.194S-5.003 40.307 1.094 31.907zM10.97 53.28c-1.716-10.236 20.26-23.845 18.71-17.334S12.686 63.516 10.97 53.28zM30.88 62.261c-7.934-6.692.01-31.289 3.043-25.324s2.858 31.016-3.043 25.324zM52.121 54.831c-10.375.3-20.85-23.33-14.612-20.905s24.987 21.505 14.612 20.905zM63.452 33.57c-6.83 7.815-31.284-.558-25.266-3.486s26.078-2.328 25.266 3.486zM57.563 15.045c-1.163 10.314-26.032 17.359-22.753 11.525s24.638-15.814 22.753-11.525z" />
-    </symbol>
-
-
-
-    <symbol id="icon-max" viewBox="0 0 23 22">
-      <path fill-rule="evenodd" clip-rule="evenodd"
-        d="M11.7471 21.9372C9.48994 21.9372 8.441 21.6207 6.6177 20.3544C5.46441 21.7789 1.81232 22.8922 1.65305 20.9876C1.65305 19.5578 1.32354 18.3496 0.950092 17.0306C0.505251 15.4056 0 13.596 0 10.9739C0 4.71138 5.34908 0 11.6867 0C18.0298 0 22.9999 4.94352 22.9999 11.0319C23.0212 17.0262 17.9867 21.9052 11.7471 21.9372ZM11.8405 5.41308C8.75403 5.26008 6.3486 7.31241 5.81588 10.5307C5.37653 13.195 6.15638 16.4397 6.8209 16.6086C7.13942 16.6824 7.94124 16.0599 8.441 15.5798C9.26737 16.1282 10.2297 16.4576 11.2309 16.5347C14.4289 16.6825 17.1615 14.3435 17.3763 11.2746C17.5013 8.1992 15.039 5.59435 11.8405 5.41836L11.8405 5.41308Z"
-        fill="white" />
-    </symbol>
-
-
-    <symbol id="icon-tg" viewBox="0 0 21 21">
-      <g clip-path="url(#clip0_1_86)">
-        <path
-          d="M19.2952 1.86278L0.690181 9.07439C-0.058518 9.41022 -0.311749 10.0828 0.50922 10.4478L5.28221 11.9724L16.8227 4.80331C17.4528 4.35324 18.0979 4.47326 17.5428 4.96835L7.63109 13.9891L7.31974 17.8067C7.60812 18.3961 8.13616 18.3989 8.47298 18.1059L11.2152 15.4978L15.9117 19.0328C17.0025 19.6819 17.596 19.263 17.8307 18.0733L20.9112 3.4114C21.2311 1.94694 20.6856 1.30168 19.2952 1.86278Z"
-          fill="white" />
-      </g>
-      <defs>
-        <clipPath id="clip0_1_86">
-          <rect width="21" height="21" fill="white" />
-        </clipPath>
-      </defs>
-    </symbol>
-  </svg>
 
 
   <!-- HEADER -->
@@ -49,15 +867,15 @@
     <div class="header__container u-container">
 
       <!-- logo -->
-      <a href="./#header" class="header__logo">
-        <div class="header__logo-icon">
-          <svg width="65" height="64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <use href="#logo"></use>
+      <a href="./#header" class="logo">
+        <div class="logo-icon">
+          <svg width="65" height="64" fill="#fff">
+            <use href="/images/common/sprites.svg#logo"></use>
           </svg>
         </div>
         <div>
-          <p class="header__logo-text header__logo-text--name">ВЕРБА</p>
-          <p class="header__logo-text">типография-верба.рф</p>
+          <p class="logo-text logo-text--name">ВЕРБА</p>
+          <p class="logo-text">типография-верба.рф</p>
         </div>
       </a>
 
@@ -66,10 +884,10 @@
         <nav class="header__nav">
           <ul class="header__nav-list">
 
-            <li class="header__nav-item header-dropdown">
+            <li class="header__nav-item custom-dropdown">
               <!-- dropdown -->
-              <details class="header-dropdown__details">
-                <summary class="header-dropdown__summary">
+              <details class="custom-dropdown__details">
+                <summary class="custom-dropdown__summary">
                   <span>Продукция</span>
                   <svg width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.97 0.75L7.35167 5.36833C6.80625 5.91375 5.91375 5.91375 5.36833 5.36833L0.75 0.75"
@@ -78,84 +896,89 @@
                   </svg>
                 </summary>
               </details>
-              <div class="header-dropdown__wrapper">
-                <ul class="header-dropdown__list">
-                  <li class="header-dropdown__item"><a href="./#header" class="header-dropdown__link">Листовки</a>
+              <div class="custom-dropdown__wrapper">
+                <ul class="custom-dropdown__list">
+                  <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                      class="custom-dropdown__link">Листовки</a>
                   </li>
-                  <li class="header-dropdown__item"><a href="./#header" class="header-dropdown__link">Флаеры</a>
+                  <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                      class="custom-dropdown__link">Флаеры</a>
                   </li>
-                  <li class="header-dropdown__item"><a href="./#header" class="header-dropdown__link">Буклеты</a>
+                  <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                      class="custom-dropdown__link">Буклеты</a>
                   </li>
-                  <li class="header-dropdown__item"><a href="./#header" class="header-dropdown__link">Блокноты</a>
+                  <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                      class="custom-dropdown__link">Блокноты</a>
                   </li>
-                  <li class="header-dropdown__item"><a href="./#header" class="header-dropdown__link">Подарочные
+                  <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                      class="custom-dropdown__link">Подарочные
                       пакеты</a>
                   </li>
-                  <li class="header-dropdown__item"><a href="./#header" class="header-dropdown__link">Ручки</a>
+                  <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                      class="custom-dropdown__link">Ручки</a>
                   </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="header__nav-item"><a href="./#header" class="header__nav-link">Дизайн</a></li>
+            <li class="header__nav-item"><a href="./#header" class="header__nav-link">Госзаказчикам</a></li>
+
+          </ul>
+        </nav>
+
+        <div class="header__wrapper">
+          <!-- messengers -->
+          <ul class="header__socials">
+            <li class="header__socials-item">
+              <a href="./#header" class="header__socials-link header__socials-link--max" aria-label="MAX">
+                <svg width="23" height="22" fill="#fff">
+                  <use href="/images/common/sprites.svg#icon-max"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="header__socials-item">
+              <a href="./#header" class="header__socials-link header__socials-link--tg" aria-label="Telegram">
+                <svg width="21" height="21" fill="#fff">
+                  <use href="/images/common/sprites.svg#icon-tg"></use>
+                </svg>
+              </a>
             </li>
           </ul>
-      </div>
-      </li>
 
-      <li class="header__nav-item"><a href="./#header" class="header__nav-link">Дизайн</a></li>
-      <li class="header__nav-item"><a href="./#header" class="header__nav-link">Госзаказчикам</a></li>
-
-      </ul>
-      </nav>
-
-      <div class="header__wrapper">
-        <!-- messengers -->
-        <ul class="header__socials">
-          <li class="header__socials-item">
-            <a href="./#header" class="header__socials-link header__socials-link--max" aria-label="MAX">
-              <svg width="23" height="22">
-                <use href="#icon-max"></use>
+          <!-- address -->
+          <div class="header__address">
+            <p class="header__address-phone">+7 (000) 000-00-00</p>
+            <address class="header__address-location">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.7467 5.63333C13.0467 2.55333 10.3601 1.16667 8.00006 1.16667C8.00006 1.16667 8.00006 1.16667 7.9934 1.16667C5.64006 1.16667 2.94673 2.54667 2.24673 5.62667C1.46673 9.06667 3.5734 11.98 5.48006 13.8133C6.18673 14.4933 7.0934 14.8333 8.00006 14.8333C8.90673 14.8333 9.8134 14.4933 10.5134 13.8133C12.4201 11.98 14.5267 9.07333 13.7467 5.63333ZM8.00006 8.97333C6.84006 8.97333 5.90006 8.03334 5.90006 6.87333C5.90006 5.71334 6.84006 4.77333 8.00006 4.77333C9.16006 4.77333 10.1001 5.71334 10.1001 6.87333C10.1001 8.03334 9.16006 8.97333 8.00006 8.97333Z"
+                  fill="#313A45" fill-opacity="0.7" />
               </svg>
-            </a>
-          </li>
-          <li class="header__socials-item">
-            <a href="./#header" class="header__socials-link header__socials-link--tg" aria-label="Telegram">
-              <svg width="21" height="21">
-                <use href="#icon-tg"></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
+              <span>Москва, Московская обл.</span>
+            </address>
+          </div>
 
-        <!-- address -->
-        <div class="header__address">
-          <p class="header__address-phone">+7 (000) 000-00-00</p>
-          <address class="header__address-location">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- phone -->
+          <a href="./#consultation-form" class="header__phone">
+            <span>Заказать звонок</span>
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                d="M13.7467 5.63333C13.0467 2.55333 10.3601 1.16667 8.00006 1.16667C8.00006 1.16667 8.00006 1.16667 7.9934 1.16667C5.64006 1.16667 2.94673 2.54667 2.24673 5.62667C1.46673 9.06667 3.5734 11.98 5.48006 13.8133C6.18673 14.4933 7.0934 14.8333 8.00006 14.8333C8.90673 14.8333 9.8134 14.4933 10.5134 13.8133C12.4201 11.98 14.5267 9.07333 13.7467 5.63333ZM8.00006 8.97333C6.84006 8.97333 5.90006 8.03334 5.90006 6.87333C5.90006 5.71334 6.84006 4.77333 8.00006 4.77333C9.16006 4.77333 10.1001 5.71334 10.1001 6.87333C10.1001 8.03334 9.16006 8.97333 8.00006 8.97333Z"
-                fill="#313A45" fill-opacity="0.7" />
+                d="M8.74784 11.8354L7.28325 13.3C6.9745 13.6087 6.48367 13.6087 6.167 13.3079C6.07992 13.2208 5.99284 13.1417 5.90575 13.0546C5.09034 12.2312 4.35409 11.3683 3.697 10.4658C3.04784 9.56333 2.52534 8.66083 2.14534 7.76625C1.77325 6.86375 1.58325 6.00083 1.58325 5.1775C1.58325 4.63917 1.67825 4.12458 1.86825 3.64958C2.05825 3.16667 2.35909 2.72333 2.77867 2.3275C3.28534 1.82875 3.8395 1.58333 4.42534 1.58333C4.647 1.58333 4.86867 1.63083 5.06659 1.72583C5.27242 1.82083 5.4545 1.96333 5.597 2.16917L7.43367 4.75792C7.57617 4.95583 7.67909 5.13792 7.75034 5.31208C7.82159 5.47833 7.86117 5.64458 7.86117 5.795C7.86117 5.985 7.80575 6.175 7.69492 6.35708C7.592 6.53917 7.44159 6.72917 7.25159 6.91917L6.64992 7.54458C6.56284 7.63167 6.52325 7.73458 6.52325 7.86125C6.52325 7.92458 6.53117 7.98 6.547 8.04333C6.57075 8.10667 6.5945 8.15417 6.61034 8.20167C6.75284 8.46292 6.99825 8.80333 7.34659 9.215C7.70284 9.62667 8.08284 10.0462 8.4945 10.4658C8.57367 10.545 8.66075 10.6242 8.73992 10.7033C9.05659 11.0121 9.0645 11.5187 8.74784 11.8354Z"
+                fill="#D31A27" />
+              <path
+                d="M17.393 14.5112C17.393 14.7329 17.3534 14.9625 17.2743 15.1842C17.2505 15.2475 17.2268 15.3108 17.1951 15.3742C17.0605 15.6592 16.8863 15.9283 16.6568 16.1817C16.2688 16.6092 15.8413 16.9179 15.3584 17.1158C15.3505 17.1158 15.3426 17.1237 15.3347 17.1237C14.8676 17.3137 14.3609 17.4167 13.8147 17.4167C13.0072 17.4167 12.1443 17.2267 11.2338 16.8387C10.3234 16.4508 9.41301 15.9283 8.51051 15.2712C8.20176 15.0417 7.89301 14.8121 7.6001 14.5667L10.1888 11.9779C10.4105 12.1442 10.6084 12.2708 10.7747 12.3579C10.8143 12.3737 10.8618 12.3975 10.9172 12.4212C10.9805 12.445 11.0438 12.4529 11.1151 12.4529C11.2497 12.4529 11.3526 12.4054 11.4397 12.3183L12.0413 11.7246C12.2393 11.5267 12.4293 11.3762 12.6113 11.2812C12.7934 11.1704 12.9755 11.115 13.1734 11.115C13.3238 11.115 13.4822 11.1467 13.6563 11.2179C13.8305 11.2892 14.0126 11.3921 14.2105 11.5267L16.8309 13.3871C17.0368 13.5296 17.1793 13.6958 17.2663 13.8937C17.3455 14.0917 17.393 14.2896 17.393 14.5112Z"
+                fill="#D31A27" />
             </svg>
-            <span>Москва, Московская обл.</span>
-          </address>
+          </a>
         </div>
-
-        <!-- phone -->
-        <a href="./#consultation" class="header__phone">
-          <span>Заказать звонок</span>
-          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M8.74784 11.8354L7.28325 13.3C6.9745 13.6087 6.48367 13.6087 6.167 13.3079C6.07992 13.2208 5.99284 13.1417 5.90575 13.0546C5.09034 12.2312 4.35409 11.3683 3.697 10.4658C3.04784 9.56333 2.52534 8.66083 2.14534 7.76625C1.77325 6.86375 1.58325 6.00083 1.58325 5.1775C1.58325 4.63917 1.67825 4.12458 1.86825 3.64958C2.05825 3.16667 2.35909 2.72333 2.77867 2.3275C3.28534 1.82875 3.8395 1.58333 4.42534 1.58333C4.647 1.58333 4.86867 1.63083 5.06659 1.72583C5.27242 1.82083 5.4545 1.96333 5.597 2.16917L7.43367 4.75792C7.57617 4.95583 7.67909 5.13792 7.75034 5.31208C7.82159 5.47833 7.86117 5.64458 7.86117 5.795C7.86117 5.985 7.80575 6.175 7.69492 6.35708C7.592 6.53917 7.44159 6.72917 7.25159 6.91917L6.64992 7.54458C6.56284 7.63167 6.52325 7.73458 6.52325 7.86125C6.52325 7.92458 6.53117 7.98 6.547 8.04333C6.57075 8.10667 6.5945 8.15417 6.61034 8.20167C6.75284 8.46292 6.99825 8.80333 7.34659 9.215C7.70284 9.62667 8.08284 10.0462 8.4945 10.4658C8.57367 10.545 8.66075 10.6242 8.73992 10.7033C9.05659 11.0121 9.0645 11.5187 8.74784 11.8354Z"
-              fill="#D31A27" />
-            <path
-              d="M17.393 14.5112C17.393 14.7329 17.3534 14.9625 17.2743 15.1842C17.2505 15.2475 17.2268 15.3108 17.1951 15.3742C17.0605 15.6592 16.8863 15.9283 16.6568 16.1817C16.2688 16.6092 15.8413 16.9179 15.3584 17.1158C15.3505 17.1158 15.3426 17.1237 15.3347 17.1237C14.8676 17.3137 14.3609 17.4167 13.8147 17.4167C13.0072 17.4167 12.1443 17.2267 11.2338 16.8387C10.3234 16.4508 9.41301 15.9283 8.51051 15.2712C8.20176 15.0417 7.89301 14.8121 7.6001 14.5667L10.1888 11.9779C10.4105 12.1442 10.6084 12.2708 10.7747 12.3579C10.8143 12.3737 10.8618 12.3975 10.9172 12.4212C10.9805 12.445 11.0438 12.4529 11.1151 12.4529C11.2497 12.4529 11.3526 12.4054 11.4397 12.3183L12.0413 11.7246C12.2393 11.5267 12.4293 11.3762 12.6113 11.2812C12.7934 11.1704 12.9755 11.115 13.1734 11.115C13.3238 11.115 13.4822 11.1467 13.6563 11.2179C13.8305 11.2892 14.0126 11.3921 14.2105 11.5267L16.8309 13.3871C17.0368 13.5296 17.1793 13.6958 17.2663 13.8937C17.3455 14.0917 17.393 14.2896 17.393 14.5112Z"
-              fill="#D31A27" />
-          </svg>
-        </a>
       </div>
-    </div>
 
-    <button type="button" class="header__open">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <button type="button" class="header__open" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
 
     </div>
@@ -215,7 +1038,7 @@
             <div class="hero-service__text">
               <p class="hero-service__title">Листовки</p>
               <span class="hero-service__tag">Выгодно</span>
-              <a href="./#hero" class="hero-service__link">Заказать</a>
+              <a href="./prices/index.html" target="_blank" class="hero-service__link">Заказать</a>
             </div>
           </li>
 
@@ -231,7 +1054,7 @@
             <div class="hero-service__text">
               <p class="hero-service__title">Флаеры</p>
               <span class="hero-service__tag">Выгодно</span>
-              <a href="./#hero" class="hero-service__link">Заказать</a>
+              <a href="./prices/index.html" target="_blank" class="hero-service__link">Заказать</a>
             </div>
           </li>
 
@@ -247,7 +1070,7 @@
             <div class="hero-service__text">
               <p class="hero-service__title">Буклеты</p>
               <span class="hero-service__tag">Выгодно</span>
-              <a href="./#hero" class="hero-service__link">Заказать</a>
+              <a href="./prices/index.html" target="_blank" class="hero-service__link">Заказать</a>
             </div>
           </li>
 
@@ -263,7 +1086,7 @@
             <div class="hero-service__text">
               <p class="hero-service__title">Блокноты</p>
               <span class="hero-service__tag">Выгодно</span>
-              <a href="./#hero" class="hero-service__link">Заказать</a>
+              <a href="./prices/index.html" target="_blank" class="hero-service__link">Заказать</a>
             </div>
           </li>
 
@@ -279,7 +1102,7 @@
             <div class="hero-service__text">
               <p class="hero-service__title">Подарочные пакеты</p>
               <span class="hero-service__tag">Выгодно</span>
-              <a href="./#hero" class="hero-service__link">Заказать</a>
+              <a href="./prices/index.html" target="_blank" class="hero-service__link">Заказать</a>
             </div>
           </li>
 
@@ -295,7 +1118,7 @@
             <div class="hero-service__text">
               <p class="hero-service__title">Ручки</p>
               <span class="hero-service__tag">Выгодно</span>
-              <a href="./#hero" class="hero-service__link">Заказать</a>
+              <a href="./prices/index.html" target="_blank" class="hero-service__link">Заказать</a>
             </div>
           </li>
 
@@ -627,8 +1450,8 @@
             <li class="faq-item">
               <details class="faq-item__details" name="faq" open>
                 <summary class="faq-item__summary">
-                  <p class="faq-item__question">Есть ли доставка?</p>
-                  <div class="faq-item__mark"></div>
+                  <span class="faq-item__question">Есть ли доставка?</span>
+                  <span class="faq-item__mark"></span>
                 </summary>
               </details>
 
@@ -646,8 +1469,8 @@
             <li class="faq-item">
               <details class="faq-item__details" name="faq">
                 <summary class="faq-item__summary">
-                  <p class="faq-item__question">Поможете с дизайном?</p>
-                  <div class="faq-item__mark"></div>
+                  <span class="faq-item__question">Поможете с дизайном?</span>
+                  <span class="faq-item__mark"></span>
                 </summary>
               </details>
 
@@ -665,8 +1488,8 @@
             <li class="faq-item">
               <details class="faq-item__details" name="faq">
                 <summary class="faq-item__summary">
-                  <p class="faq-item__question">Как отправить макет?</p>
-                  <div class="faq-item__mark"></div>
+                  <span class="faq-item__question">Как отправить макет?</span>
+                  <span class="faq-item__mark"></span>
                 </summary>
               </details>
 
@@ -684,8 +1507,8 @@
             <li class="faq-item">
               <details class="faq-item__details" name="faq">
                 <summary class="faq-item__summary">
-                  <p class="faq-item__question">Как быстро будет готово?</p>
-                  <div class="faq-item__mark"></div>
+                  <span class="faq-item__question">Как быстро будет готово?</span>
+                  <span class="faq-item__mark"></span>
                 </summary>
               </details>
 
@@ -703,8 +1526,8 @@
             <li class="faq-item">
               <details class="faq-item__details" name="faq">
                 <summary class="faq-item__summary">
-                  <p class="faq-item__question">Сколько стоит печать?</p>
-                  <div class="faq-item__mark"></div>
+                  <span class="faq-item__question">Сколько стоит печать?</span>
+                  <span class="faq-item__mark"></span>
                 </summary>
               </details>
 
@@ -735,7 +1558,7 @@
           <p class="consultation__description">Заполните форму и наш специалист перезвонит вам через 15 минут!</p>
 
           <form action="https://formsubmit.co/f68727b86c19f77c00ac1fd3deecda87" method="POST" class="consultation__form"
-            id="consultation">
+            id="consultation-form">
             <input type="text" id="name" name="Имя" placeholder="Имя" autocomplete="given-name"
               class="consultation__form-input">
             <input type="tel" id="phone" name="Телефон" placeholder="+7 (999) 999-99-99" autocomplete="tel"
@@ -771,12 +1594,278 @@
       </div>
     </section>
 
+
+    <!-- REVIEWS -->
+    <section class="reviews">
+      <div class="reviews__container u-container">
+
+        <div class="reviews__text">
+          <h2 class="reviews__title u-title-section">
+            Отзывы наших клиентов
+          </h2>
+          <p class="reviews__description">
+            Мнение тех, кто уже прошел этот путь с нами
+          </p>
+        </div>
+
+        <div class="reviews__slider-controls">
+          <button type="button" aria-label="Назад" class="reviews__slider-prev" disabled>
+            <img src="/images/common/arrow.svg" alt="" width="22" height="22" loading="lazy" decoding="async"
+              aria-hidden="true">
+          </button>
+          <button type="button" aria-label="Вперед" class="reviews__slider-next">
+            <img src="/images/common/arrow.svg" alt="" width="22" height="22" loading="lazy" decoding="async"
+              aria-hidden="true">
+          </button>
+        </div>
+
+        <div class="reviews__slider">
+
+          <ul class="reviews__list swiper-wrapper">
+
+            <!-- 1 -->
+            <li class="swiper-slide">
+              <div class="reviews-card">
+                <p class="reviews-card__name">Иванов Иван</p>
+                <p class="reviews-card__text">
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                  et dolore magna aliqua.
+                </p>
+
+                <img src="/images/common/quotes.svg" alt="" width="32" height="26" loading="lazy" draggable="false"
+                  decoding="async" aria-hidden="true" class="reviews-card__quotes">
+
+                <div class="reviews-card__stars">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                </div>
+              </div>
+            </li>
+
+            <!-- 2 -->
+            <li class="swiper-slide">
+              <div class="reviews-card">
+                <p class="reviews-card__name">Иванов Иван</p>
+                <p class="reviews-card__text">
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                  et dolore magna aliqua.
+                </p>
+
+                <img src="/images/common/quotes.svg" alt="" width="32" height="26" loading="lazy" draggable="false"
+                  decoding="async" aria-hidden="true" class="reviews-card__quotes">
+
+                <div class="reviews-card__stars">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                </div>
+              </div>
+            </li>
+
+            <!-- 3 -->
+            <li class="swiper-slide">
+              <div class="reviews-card">
+                <p class="reviews-card__name">Иванов Иван</p>
+                <p class="reviews-card__text">
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                  et dolore magna aliqua.
+                </p>
+
+                <img src="/images/common/quotes.svg" alt="" width="32" height="26" loading="lazy" draggable="false"
+                  decoding="async" aria-hidden="true" class="reviews-card__quotes">
+
+                <div class="reviews-card__stars">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                </div>
+              </div>
+            </li>
+
+            <!-- 4 -->
+            <li class="swiper-slide">
+              <div class="reviews-card">
+                <p class="reviews-card__name">Иванов Иван</p>
+                <p class="reviews-card__text">
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                  et dolore magna aliqua.
+                </p>
+
+                <img src="/images/common/quotes.svg" alt="" width="32" height="26" loading="lazy" draggable="false"
+                  decoding="async" aria-hidden="true" class="reviews-card__quotes">
+
+                <div class="reviews-card__stars">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                  <img src="/images/common/star.svg" alt="" width="17" height="16" loading="lazy" draggable="false"
+                    decoding="async" aria-hidden="true">
+                </div>
+              </div>
+            </li>
+
+
+
+          </ul>
+
+        </div>
+
+        <a href="./#consultation-form" class="reviews__link">Жалоба директору</a>
+
+      </div>
+    </section>
+
   </main>
 
 
-  <footer></footer>
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer__container u-container">
+
+      <!-- top -->
+      <div class="footer__top">
+
+        <!-- left -->
+        <div class="footer__left">
+          <!-- logo -->
+          <a href="./#footer" class="logo logo--alt">
+            <div class="logo-icon">
+              <svg width="65" height="64" fill="#e53945">
+                <use href="/images/common/sprites.svg#logo"></use>
+              </svg>
+            </div>
+            <div>
+              <p class="logo-text logo-text--name">ВЕРБА</p>
+              <p class="logo-text">типография-верба.рф</p>
+            </div>
+          </a>
+          <!-- description -->
+          <p class="footer__description">
+            Описание компании
+            в две три строки
+          </p>
+        </div>
+
+        <!-- center -->
+        <div class="footer__center">
+          <nav class="footer__nav">
+            <p class="footer__nav-title">Навигация</p>
+
+            <ul class="footer__nav-list">
+              <li class="footer__nav-item custom-dropdown">
+                <!-- dropdown -->
+                <details class="custom-dropdown__details">
+                  <summary class="custom-dropdown__summary">
+                    <span>Продукция</span>
+                    <svg width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.97 0.75L7.35167 5.36833C6.80625 5.91375 5.91375 5.91375 5.36833 5.36833L0.75 0.75"
+                        stroke="#fff" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </summary>
+                </details>
+                <div class="custom-dropdown__wrapper">
+                  <ul class="custom-dropdown__list">
+                    <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                        class="custom-dropdown__link">Листовки</a>
+                    </li>
+                    <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                        class="custom-dropdown__link">Флаеры</a>
+                    </li>
+                    <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                        class="custom-dropdown__link">Буклеты</a>
+                    </li>
+                    <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                        class="custom-dropdown__link">Блокноты</a>
+                    </li>
+                    <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                        class="custom-dropdown__link">Подарочные
+                        пакеты</a>
+                    </li>
+                    <li class="custom-dropdown__item"><a href="./prices/index.html" target="_blank"
+                        class="custom-dropdown__link">Ручки</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="footer__nav-item"><a href="./#footer" class="footer__nav-link">Дизайн</a></li>
+              <li class="footer__nav-item"><a href="./#footer" class="footer__nav-link">Госзаказчикам</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- right -->
+        <div class="footer__right">
+          <div class="footer__contacts">
+            <p class="footer__contacts-title">Контакты</p>
+
+            <a href="tel:+70000000000" class="footer__contacts-phone">
+              <img src="/images/common/call.svg" alt="" width="19" height="19" loading="lazy" draggable="false"
+                decoding="async" aria-hidden="true">
+              <span>+7 (000) 000-00-00</span>
+            </a>
+            <a href="mailto:a.g.a.g.d@yandex.ru" class="footer__contacts-mail">
+              <img src="/images/common/mail.svg" alt="" width="19" height="19" loading="lazy" draggable="false"
+                decoding="async" aria-hidden="true">
+              <span>a.g.a.g.d@yandex.ru</span>
+            </a>
+
+            <div class="footer__contacts-socilas">
+              <a href="./#footer" class="footer__contacts-max" aria-label="MAX">
+                <svg width="23" height="22" fill="#313a45">
+                  <use href="/images/common/sprites.svg#icon-max"></use>
+                </svg>
+              </a>
+              <a href="./#footer" class="footer__contacts-tg" aria-label="Telegram">
+                <svg width="21" height="21" fill="#313a45">
+                  <use href="/images/common/sprites.svg#icon-tg"></use>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- bottom -->
+      <div class="footer__bottom">
+        <a href="./#footer" class="footer__privacy">Договор оферты/политика конфидециальности</a>
+      </div>
+
+    </div>
+  </footer>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 

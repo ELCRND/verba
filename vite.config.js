@@ -16,7 +16,7 @@ export default defineConfig({
   // Сборка
   build: {
     // Выходная директория
-    outDir: "dist",
+    outDir: "docs",
 
     // Оптимизация chunk'ов
     rollupOptions: {

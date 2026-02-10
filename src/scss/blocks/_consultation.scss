@@ -1,5 +1,9 @@
 @use "../helpers/" as *;
 
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                        CONSULTATION                          ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
 .consultation {
   padding-top: rem(50);
 
@@ -61,6 +65,9 @@
       border-radius: 15px;
       background: var(--color-red);
       border-bottom: 3px solid #d31a27;
+      box-shadow:
+        0 11px 15px 0 rgba(211, 26, 39, 0.35),
+        0 0 40px rgba(211, 26, 39, 0.35) inset;
       font-weight: 500;
       font-size: rem(16);
       color: var(--color-white-absolute);
@@ -94,6 +101,9 @@
   }
 }
 
+/* ═══════════════════════════════════╗
+   CONSULTATION / tablet              ║
+   ═══════════════════════════════════╝ */
 @include tablet {
   .consultation {
     padding-top: rem(46);
@@ -154,6 +164,9 @@
   }
 }
 
+/* ═══════════════════════════════════╗
+   CONSULTATION / mobile              ║
+   ═══════════════════════════════════╝ */
 @include mobile {
   .consultation {
     padding-top: rem(36);

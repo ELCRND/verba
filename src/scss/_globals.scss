@@ -25,7 +25,6 @@ body {
   color: var(--color-white);
   background-color: var(--color-white);
   position: relative;
-  font-family: "Gilroy", sans-serif;
 }
 
 main {
@@ -60,6 +59,144 @@ summary {
     pointer;
 }
 
+a,
+button {
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 1;
+  }
+
+  @include tablet {
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}
+
 :focus-visible {
   outline: none;
+}
+
+.logo {
+  margin-right: rem(40);
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  flex-shrink: 0;
+
+  &--alt {
+    .logo-icon {
+      background-color: var(--color-white-absolute);
+    }
+
+    .logo-text {
+      color: var(--color-white-absolute);
+
+      &--name {
+        color: var(--color-white-absolute);
+      }
+    }
+  }
+
+  &-icon {
+    width: rem(60);
+    height: rem(60);
+    border-radius: 7px;
+    background-color: var(--color-red);
+    position: relative;
+    overflow: hidden;
+
+    svg {
+      position: absolute;
+      bottom: -7px;
+      right: -8px;
+    }
+  }
+
+  &-text {
+    font-weight: 500;
+    font-size: rem(13);
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+
+    &--name {
+      line-height: 75%;
+      font-weight: 800;
+      font-size: rem(45);
+      color: var(--color-red);
+    }
+  }
+}
+
+.custom-dropdown {
+  position: relative;
+
+  &__details {
+    font-weight: 500;
+    font-size: rem(16);
+    color: var(--color-black);
+
+    &[open] {
+      & + .custom-dropdown__wrapper {
+        grid-template-rows: 1fr;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .custom-dropdown__summary {
+        svg {
+          rotate: 180deg;
+        }
+      }
+    }
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    gap: rem(13);
+    position: relative;
+
+    &::before {
+      @include abs-center;
+      content: "";
+      width: 100%;
+      height: rem(44);
+    }
+  }
+
+  &__wrapper {
+    border-radius: 6px;
+    display: grid;
+    grid-template-rows: 0fr;
+    background-color: var(--color-white);
+    position: absolute;
+    transition: var(--transition-duration);
+    translate: rem(-14) rem(20);
+  }
+
+  &__list {
+    overflow: hidden;
+    min-width: rem(220);
+    padding-inline: rem(14);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    padding-block: rem(10);
+    display: block;
+    font-weight: 500;
+    font-size: rem(16);
+    color: var(--color-black);
+
+    &:hover {
+      color: var(--color-red);
+      text-decoration: underline;
+    }
+  }
 }
